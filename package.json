@@ -1,0 +1,38 @@
+{
+  "name": "s3dx-viewer",
+  "version": "1.0.0",
+  "description": "Professional 3D viewer for S3DX surfboard design files with BoardCAD-compatible mesh generation",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "surfboard",
+    "boardcad", 
+    "s3dx",
+    "3d-viewer",
+    "threejs",
+    "react",
+    "typescript",
+    "bezier-curves",
+    "mesh-generation"
+  ],
+  "author": "S3DX Viewer Contributors",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "@types/three": "^0.178.1",
+    "@vitejs/plugin-react": "^4.7.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "three": "^0.179.1",
+    "three-stdlib": "^2.36.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.0.6"
+  }
+}
