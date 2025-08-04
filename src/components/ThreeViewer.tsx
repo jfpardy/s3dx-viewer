@@ -84,12 +84,9 @@ export const ThreeViewer: React.FC<ThreeViewerProps> = ({ design, className }) =
     directionalLight.shadow.mapSize.height = 2048;
     scene.add(directionalLight);
 
-    // Grid helper - make it smaller
-    const gridHelper = new THREE.GridHelper(4, 20, 0x444444, 0x222222);
-    scene.add(gridHelper);
 
-    // Axes helper - make it smaller
-    const axesHelper = new THREE.AxesHelper(1);
+    // Axes helper - make it large enough to always be visible
+    const axesHelper = new THREE.AxesHelper(10); // 10 meters length
     scene.add(axesHelper);
 
     // OrbitControls for camera manipulation  
@@ -185,14 +182,17 @@ export const ThreeViewer: React.FC<ThreeViewerProps> = ({ design, className }) =
     const size = box.getSize(new THREE.Vector3());
     const maxSize = Math.max(size.x, size.y, size.z);
     
+    // Center the surfboard at origin (0,0,0)
+    surfboardMesh.position.sub(center);
+    
     // Position camera to see the entire surfboard
     const camera = cameraRef.current!;
     const controls = controlsRef.current!;
     
-    // Set camera position based on bounding box
+    // Set camera position based on bounding box size (now centered at origin)
     const distance = maxSize * 2; // Distance from center
-    camera.position.set(center.x + distance * 0.7, center.y - distance * 0.5, center.z + distance * 0.5);
-    controls.target.set(center.x, center.y, center.z);
+    camera.position.set(distance * 0.7, -distance * 0.5, distance * 0.5);
+    controls.target.set(0, 0, 0); // Look at origin
     controls.update();
     
       // Add the mesh to the scene
@@ -225,17 +225,18 @@ export const ThreeViewer: React.FC<ThreeViewerProps> = ({ design, className }) =
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column',
-          backgroundColor: '#f5f5f5',
-          color: '#666',
+          backgroundColor: 'var(--bg-secondary)',
+          color: 'var(--text-secondary)',
           padding: '2rem',
-          textAlign: 'center'
+          textAlign: 'center',
+          borderRadius: '8px'
         }}
       >
-        <div style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>
+        <div style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)', fontWeight: '600' }}>
           ⚠️ {error.message}
         </div>
         {error.details && (
-          <div style={{ fontSize: '0.9rem', opacity: 0.7 }}>
+          <div style={{ fontSize: '0.9rem', color: 'var(--text-tertiary)' }}>
             {error.details}
           </div>
         )}

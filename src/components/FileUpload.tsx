@@ -109,7 +109,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileLoaded, onError })
         .file-upload-area {
           width: 100%;
           height: 100%;
-          border: 2px dashed #ccc;
+          border: 2px dashed var(--border-color);
           border-radius: 8px;
           display: flex;
           flex-direction: column;
@@ -117,17 +117,20 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileLoaded, onError })
           justify-content: center;
           cursor: pointer;
           transition: all 0.3s ease;
-          background-color: #fafafa;
+          background-color: var(--bg-secondary);
         }
 
         .file-upload-area:hover {
-          border-color: #007bff;
-          background-color: #f0f8ff;
+          border-color: var(--link-color);
+          background-color: var(--bg-tertiary);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px var(--shadow-light);
         }
 
         .file-upload-area.dragging {
-          border-color: #007bff;
-          background-color: #e6f3ff;
+          border-color: var(--link-color);
+          background-color: var(--bg-tertiary);
+          border-width: 2px;
         }
 
         .file-upload-area.loading {
@@ -142,18 +145,20 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileLoaded, onError })
         .upload-icon {
           font-size: 48px;
           margin-bottom: 16px;
+          opacity: 0.8;
         }
 
         .upload-content h3 {
           margin: 0 0 8px 0;
-          color: #333;
-          font-size: 18px;
+          color: var(--text-primary);
+          font-size: 1.2rem;
+          font-weight: 600;
         }
 
         .upload-content p {
           margin: 0;
-          color: #666;
-          font-size: 14px;
+          color: var(--text-secondary);
+          font-size: 0.9rem;
         }
 
         .loading-content {
@@ -163,8 +168,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileLoaded, onError })
         .spinner {
           width: 40px;
           height: 40px;
-          border: 4px solid #f3f3f3;
-          border-top: 4px solid #007bff;
+          border: 4px solid var(--bg-tertiary);
+          border-top: 4px solid var(--link-color);
           border-radius: 50%;
           animation: spin 1s linear infinite;
           margin: 0 auto 16px;
@@ -177,7 +182,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileLoaded, onError })
 
         .loading-content p {
           margin: 0;
-          color: #666;
+          color: var(--text-secondary);
         }
       `}</style>
     </div>

@@ -97,30 +97,37 @@ export const BoardInfo: React.FC<BoardInfoProps> = ({ design }) => {
 
       <style>{`
         .board-info {
-          background: white;
+          background: var(--bg-secondary);
           border-radius: 8px;
-          padding: 20px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          padding: 25px;
+          border: 1px solid var(--border-color);
           margin-bottom: 20px;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          transition: all 0.3s ease;
         }
 
         .board-info h2 {
           margin: 0 0 20px 0;
-          color: #333;
-          font-size: 24px;
+          color: var(--text-primary);
+          font-size: 1.8rem;
+          font-weight: 600;
         }
 
         .info-section {
           margin-bottom: 24px;
         }
 
+        .info-section:last-child {
+          margin-bottom: 0;
+        }
+
         .info-section h3 {
-          margin: 0 0 12px 0;
-          color: #555;
-          font-size: 18px;
-          border-bottom: 2px solid #eee;
-          padding-bottom: 4px;
+          margin: 0 0 15px 0;
+          color: var(--text-primary);
+          font-size: 1.2rem;
+          font-weight: 600;
+          border-bottom: 1px solid var(--border-subtle);
+          padding-bottom: 8px;
         }
 
         .info-grid {
@@ -133,27 +140,29 @@ export const BoardInfo: React.FC<BoardInfoProps> = ({ design }) => {
           display: flex;
           flex-direction: column;
           gap: 4px;
+          padding: 8px 0;
+          border-bottom: 1px solid var(--border-subtle);
         }
 
         .info-item label {
-          font-weight: 600;
-          color: #666;
-          font-size: 14px;
+          font-weight: 500;
+          color: var(--text-tertiary);
+          font-size: 0.9rem;
         }
 
         .info-item span {
-          color: #333;
-          font-size: 16px;
+          color: var(--text-secondary);
+          font-size: 1rem;
         }
 
         .comment {
-          background: #f8f9fa;
-          padding: 12px;
-          border-radius: 4px;
-          border-left: 4px solid #007bff;
+          background: var(--bg-tertiary);
+          padding: 15px;
+          border-radius: 5px;
+          border-left: 4px solid var(--link-color);
           margin: 0;
-          line-height: 1.5;
-          color: #555;
+          line-height: 1.6;
+          color: var(--text-secondary);
         }
       `}</style>
     </div>

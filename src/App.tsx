@@ -10,6 +10,20 @@ import './App.css';
 function App() {
   const [design, setDesign] = useState<Shape3DDesign | null>(null);
   const [error, setError] = useState<string>('');
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('darkMode');
+    return saved ? JSON.parse(saved) : false;
+  });
+
+  // Handle dark mode
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
+  }, [isDarkMode]);
 
   // Auto-load the sample file for testing
   useEffect(() => {
@@ -46,6 +60,10 @@ function App() {
     setError('');
   };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -57,6 +75,12 @@ function App() {
             <h1>S3DX Viewer</h1>
             <p>Upload and view S3DX surfboard design files in 3D</p>
           </div>
+          <button className="theme-toggle" onClick={toggleDarkMode} title="Toggle theme">
+            <span className="toggle-icon">{isDarkMode ? '🌙' : '☀️'}</span>
+            <div className="toggle-track">
+              <div className={`toggle-thumb ${isDarkMode ? 'dark' : ''}`}></div>
+            </div>
+          </button>
         </div>
       </header>
 
