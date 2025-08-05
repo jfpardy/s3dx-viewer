@@ -13,6 +13,7 @@ A modern web-based 3D viewer for S3DX surfboard design files, built with React, 
 ## Demo
 
 Upload an S3DX surfboard design file to see it rendered in 3D with proper geometry and realistic proportions.
+**[Demo Site](s3dx.jfpardy.com)**
 
 ## Technology Stack
 
